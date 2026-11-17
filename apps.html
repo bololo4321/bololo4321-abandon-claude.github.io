@@ -6,16 +6,15 @@
   <title>網頁程式 — Abandon</title>
   <meta name="description" content="探索 Abandon 應用程式：Illustrator、Photoshop、InDesign、Lightroom。">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="flow.css">
 </head>
 <body>
 
   <header class="site-header site-header--overlay">
     <nav class="site-nav" aria-label="主選單">
+      <a class="site-nav__brand" href="index.html" aria-label="Abandon 首頁"><img class="site-nav__logo" src="assets/abandon-wordmark.png" alt="Abandon"></a>
       <ul class="site-nav__list">
         <li><a href="index.html">首頁</a></li>
         <li><a href="tools.html">網頁工具</a></li>
@@ -50,7 +49,7 @@
             <p class="app-card__desc">Using AI Tools Will Prevent<br>You From Ever Becoming a Designer</p>
           </div>
           <div class="app-card__actions">
-            <a class="btn btn--outline btn--sm" href="#">網頁版使用</a>
+            <a class="btn btn--outline btn--sm" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">網頁版使用</a>
             <a class="btn btn--sm" href="pricing.html">購買</a>
           </div>
         </li>
@@ -103,7 +102,7 @@
     <section class="container features" aria-label="應用程式介紹">
 
       <article class="feature">
-        <div class="media media--wave" role="img" aria-label="藍色線條組成的波浪抽象圖像"></div>
+        <a class="media media--illustrator" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="前往 Abandon illustrator（新分頁開啟 ChatGPT）— 黑色底與藍色細線條組成的波浪紋理"></a>
         <div class="feature__body">
           <div class="feature__brand">
             <span class="app-icon app-icon--ai" aria-hidden="true">Ai</span>
@@ -125,11 +124,11 @@
           <p class="feature__text">直接為你串聯全球高品質實體與數位相片零售商。無需動用任何圖層或遮罩，只要拿出信用卡即可快速結帳購入全世界的優質照片。最專業的相片購物體驗，輕鬆省下所有點陣圖編修時間。</p>
           <a class="feature__link" href="pricing.html">瀏覽適用於企業或學生與教師的方案</a>
         </div>
-        <div class="media media--mushroom" role="img" aria-label="雨中發光的紫色蘑菇與蝸牛"></div>
+        <a class="media media--mushroom" href="photoshop.html" aria-label="前往Photoshop（雨中發光的紫色蘑菇與蝸牛）"></a>
       </article>
 
       <article class="feature">
-        <div class="media media--abstract" role="img" aria-label="青綠、米白與橘紅交織的抽象幾何圖像"></div>
+        <a class="media media--abstract" href="indesign.html" aria-label="前往InDesign（青綠、米白與橘紅交織的抽象幾何圖像）"></a>
         <div class="feature__body">
           <div class="feature__brand">
             <span class="app-icon app-icon--id" aria-hidden="true">Id</span>
@@ -151,7 +150,7 @@
           <p class="feature__text">專為空虛極致體驗打造：一鍵套入空白頁讓你毫無意義地盡情找尋找尋找尋找存在意義。 滿年特惠按月計費。</p>
           <a class="feature__link" href="pricing.html">瀏覽適用於企業或學生與教師的方案</a>
         </div>
-        <div class="media media--mushroom" role="img" aria-label="雨中發光的紫色蘑菇與蝸牛"></div>
+        <a class="media media--mushroom" href="lightroom.html" aria-label="前往Lightroom（雨中發光的紫色蘑菇與蝸牛）"></a>
       </article>
 
     </section>
@@ -180,7 +179,7 @@
         <h2 id="f-products" class="footer-col__title">產品</h2>
         <ul>
           <li><a href="photoshop.html">Photoshop</a></li>
-          <li><a href="#">Abandon illustrator</a></li>
+          <li><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Abandon illustrator</a></li>
           <li><a href="lightroom.html">Lightroom</a></li>
           <li><a href="indesign.html">InDesign</a></li>
         </ul>
@@ -215,5 +214,6 @@
       });
     })();
   </script>
+  <script src="cursor-trail.js"></script>
 </body>
 </html>
