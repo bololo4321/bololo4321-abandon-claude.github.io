@@ -1,3 +1,9 @@
+/* 本機字型（免網路）：由 Google Fonts 的 OFL 授權字型裁切出網站用到的字元 */
+@font-face { font-family: "Noto Sans TC"; src: url("fonts/NotoSansTC-subset.woff") format("woff"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-subset.woff") format("woff"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("fonts/JetBrainsMono-subset.woff") format("woff"); font-weight: 100 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-Bold-subset.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+
 /* ==========================================================
    Abandon — 首頁（Figma node 20:65，設計稿寬 1728px）
    ========================================================== */
@@ -57,7 +63,7 @@ svg { display: block; }
 .en { font-family: var(--font-en); letter-spacing: 0.05em; }
 
 .container {
-  width: min(var(--content-max), 100% - 2 * var(--gutter));
+  width: min(var(--content-max), calc(100% - var(--gutter) - var(--gutter)));
   margin-inline: auto;
 }
 
@@ -73,6 +79,7 @@ svg { display: block; }
   font-size: var(--fs-h2);
   line-height: 1.35;
   text-align: center;
+  text-wrap: balance;
 }
 .section-title--left { text-align: left; }
 
@@ -85,13 +92,15 @@ svg { display: block; }
 
 .site-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   min-height: 100px;
   padding: 0 var(--gutter);
   background: var(--color-bg);
   border-radius: var(--radius-card);
 }
+.site-nav__brand { display: inline-flex; align-items: center; margin-right: auto; flex: 0 0 10%; }
+.site-nav__logo { display: block; width: 100%; height: auto; }
 
 .site-nav__list {
   display: flex;
@@ -143,6 +152,15 @@ svg { display: block; }
   letter-spacing: 0.05em;                 /* 4.8 / 96 */
 }
 
+/* Abandon 字標（形狀 → 字母動畫，見 wordmark.js） */
+.wordmark { display: block; height: auto; fill: currentColor; overflow: visible; }
+.wordmark .wm-shapes { display: none; }
+.wordmark.wm-anim .wm-shapes { display: block; }
+.wordmark.wm-anim .wm-letters { display: none; }
+.js .wordmark { visibility: hidden; animation: wm-show 0s 3s forwards; }   /* 準備好前先藏起來；3 秒保險 */
+@keyframes wm-show { to { visibility: visible; } }
+.hero__title .wordmark { width: clamp(275px, 29.4vw, 512px); }
+
 .hero__tagline {
   font-family: var(--font-en);
   font-size: var(--fs-hero-sub);
@@ -158,6 +176,10 @@ svg { display: block; }
   font-size: var(--fs-manifesto);
   line-height: 1.4;
 }
+
+/* 品牌宣言動畫：JS 切字完成前先隱藏，避免閃一下 */
+.js .manifesto p { visibility: hidden; }
+.manifesto .split-line { padding-block: 0.08em; }   /* 遮罩不裁到字的上下緣 */
 
 /* ---------- Cards（共用） ---------- */
 .card {
@@ -388,8 +410,8 @@ svg { display: block; }
 
 /* ≤ 600：手機 */
 @media (max-width: 600px) {
-  .site-nav { min-height: 72px; justify-content: center; }
-  .site-nav__list { gap: 20px; }
+  .site-nav { min-height: 72px; justify-content: space-between; }
+  .site-nav__list { gap: clamp(4px, 1.4vw, 8px); font-size: clamp(10px, 2vw, 12px); }
 
   .hero__inner { align-items: flex-start; text-align: left; }
 
@@ -410,3 +432,20 @@ svg { display: block; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ==========================================================
+   Hover / Focus（首頁；設計稿影片沒示範，這是我補的一致性效果）
+   ========================================================== */
+:focus-visible { outline: 2px solid var(--color-text); outline-offset: 3px; }
+
+.card--value,
+.program,
+.qa__item { transition: border-color 0.3s, background-color 0.3s; }
+
+.card--value:hover,
+.qa__item:hover { border-color: #7a7a7a; }
+.program:hover { background: rgb(255 255 255 / 0.04); }
+
+/* 品牌宣言：每行一個遮罩容器（manifesto.js） */
+.manifesto .split-line { display: block; overflow: hidden; }
+.manifesto .split-char { display: inline-block; will-change: transform; }
